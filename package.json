@@ -1,0 +1,38 @@
+{
+  "name": "benchsort-sync",
+  "version": "0.1.0",
+  "description": "Writes BenchSort exports into a museum's own database, and copies the renamed photos.",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "bin": {
+    "benchsort-sync": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "bundle": "esbuild src/cli.ts --bundle --platform=node --format=cjs --target=node24 --external:pg-native --outfile=build/benchsort-sync.cjs",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "sea": "node scripts/sea.mjs"
+  },
+  "dependencies": {
+    "mssql": "12.7.2",
+    "mysql2": "3.24.4",
+    "pg": "8.23.1"
+  },
+  "devDependencies": {
+    "@types/mssql": "12.3.0",
+    "@types/node": "24.19.1",
+    "@types/pg": "8.23.1",
+    "esbuild": "0.28.2",
+    "postject": "1.0.0-alpha.6",
+    "prettier": "3.9.9",
+    "typescript": "6.0.3",
+    "vitest": "5.0.3"
+  }
+}
